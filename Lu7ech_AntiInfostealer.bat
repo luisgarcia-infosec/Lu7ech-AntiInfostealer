@@ -35,7 +35,7 @@ function Get-ExePath($cmd) {
 }
 function IsSigned($f) { if (-not $f -or -not (Test-Path -LiteralPath $f)) { return $false }; return ((Get-AuthenticodeSignature -LiteralPath $f).Status -eq 'Valid') }
 function IsRandomName($n) { return ($n -match '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9]{8,20}\.(exe|scr|dll)$') }
-function IsKnownName($n) { return ($n -match '(?i)HR4kwl763VPZ') }
+function IsKnownName($n) { return $false }
 $evilCmd = '(?i)-enc\b|-encodedcommand|downloadstring|frombase64string|invoke-expression|iex\s|-w(indowstyle)?\s+hidden|bitsadmin.*transfer|certutil.*-urlcache'
 
 function Quarantine-File($path, $why) {
